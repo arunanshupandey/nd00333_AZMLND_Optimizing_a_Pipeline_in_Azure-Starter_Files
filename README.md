@@ -11,7 +11,22 @@ This model is then compared to an Azure AutoML run.
 **We will be using scikit-learn logistic regression and find the best output through HyperDrive. The best performing model has the accuracy of .**
 
 ## Scikit-learn Pipeline
-**Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
+The pipeline follows the normal ML Engineering steps: 
+
+1. Data Preparation
+
+In this step, the data is loaded using TabularDatasetFactory. 
+Once loaded, the data is cleansed through the train.py scripts. The null values are dropped and one-hot encoding is performed. This also splits the data into train and test datasets using the SkLearn split function. 
+
+This training data is fit into LogisticRegression model provided by Scikit-Learn. 
+
+2. Hyper Parameter Tuning: 
+The hyper drive configuration is done to tune the input arguments - C and number of iterations. We have chosen randomly c [0.03,0.3,3,10,30] and max_iterations as [25,50,75,100].
+
+3. The best model : 
+The best model : 
+ - ID :  HD_03d54f0f-57ed-46ba-8575-1f8a5eddff2a_9
+ - Metrics :  {'Regularization Strength:': 0.3, 'Max iterations:': 75, 'Accuracy': 0.9152250885179565}
 
 **What are the benefits of the parameter sampler you chose?**
 I have chosen Random Parameter Sampler. Since this supports both discrete and continueous hyperparamters. This also avoids wastage by early terminating the low performing runs. 
@@ -31,3 +46,6 @@ I have chosen Bandit Policy as it utilizes the slack factor and evaluation inter
 ## Proof of cluster clean up
 **If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
 **Image of cluster marked for deletion**
+
+![image](https://user-images.githubusercontent.com/25560357/121782979-f6897280-cbc9-11eb-9517-b46c8f9da825.png)
+
