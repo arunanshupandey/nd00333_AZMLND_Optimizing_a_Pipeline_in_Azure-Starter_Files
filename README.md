@@ -62,6 +62,11 @@ The details about the best model :
 ![image](https://user-images.githubusercontent.com/25560357/121785295-a369ec80-cbd6-11eb-93ae-1de606c3e617.png)
 
 
+While many of the parameters is generated for housekeeping activities by AutoML (number of cores, depedencies, arguments received by Config), few of them were model specific. The Ensemble models used by the best run can be seen under ensembled_algorithms parameter. The corresponding iterations (_ensembled_iterations_) and weights (_ensemble_weights_) are also generated/auto-populated by the AutoML in view of using an ensemblled model. 
+
+![image](https://user-images.githubusercontent.com/25560357/121816487-9235e400-cc99-11eb-9b16-78e88b812e3f.png)
+
+
 ## Pipeline comparison
 AutoML tried multiple models as compared to Logistic Reagression by HyperDrive. The accuracy achieved through AutoML Best model ( VotingEnsemble ) is 0.917 as compared to 0.915 achived through HyperDrive. 
 Even though the Hyperdrive and AutoML prepare the data in similar way (AutoML being slightly better through data guardrails) , they handle the configurations and execution in different way. For the HyperDrive setup, our ML Model is same but it iterates though multiple set of hyper parameters to get the best results. AutoML on other hand, tries different algorithms / models with optimal hyper parameter values to get the best results. 
